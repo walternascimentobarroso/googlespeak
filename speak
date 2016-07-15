@@ -1,0 +1,13 @@
+#!/bin/bash
+RESPOSTA=''
+for var in "$@" ; do
+	RESPOSTA="$RESPOSTA%20$var"
+done
+NEWR=''
+a=$(echo $RESPOSTA | sed "s, ,%20,g")
+
+curl -A "Mozilla/5.0" "https://translate.google.com/translate_tts?ie=UTF-8&q=$a&tl=pt-BR&client=tw-ob" | mpg123 -;
+
+#curl -A "Mozilla/5.0" "https://translate.google.com/translate_tts?ie=UTF-8&q=$a&tl=ca&client=tw-ob" | mpg123 -;
+
+#stackoverflow.com/questions/24821521/wget-unable-to-resolve-host-address-http
